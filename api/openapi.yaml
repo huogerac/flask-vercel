@@ -1,0 +1,27 @@
+## Validate it at: https://apitools.dev/swagger-parser/online/
+
+openapi: 3.0.2
+
+info:
+  version: 1.1.0
+  title: Vercel Flask App
+  description: Test the vercel deploy for python apps
+  contact:
+    name: Roger
+    email: roger@na-inter.net
+    url: https://roger.na-inter.net
+
+servers:
+  - url: http://127.0.0.1:5000
+    description: Local
+
+paths:
+  /api/version:
+    get:
+      operationId: api.api_version
+      summary: Retorna a versão da API
+      tags:
+        - Status
+      responses:
+        200:
+          description: Success

@@ -1,11 +1,18 @@
 from flask import Flask
+import connexion
 
 
-def create_app():
-    app = Flask(__name__)
+def create_app(version="/"):
 
-    @app.route("/")
-    def home():
-        return "<h2>Flask Vercel v2</h2>"
+    connexion_app = connexion.FlaskApp(
+        __name__,
+        specification_dir="./api/",
+        options={
+            "swagger_url": "api",
+        },
+    )
+    connexion_app.add_api("openapi.yaml", validate_responses=True, base_path=version)
+
+    app = connexion_app.app
 
     return app
