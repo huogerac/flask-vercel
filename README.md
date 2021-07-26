@@ -2,6 +2,13 @@
 
 This repo is to test the deploy to Vercel
 
+- Use the [v1](https://github.com/huogerac/flask-vercel/tree/v1) for the very basic and simple version (Flask only)
+- Use the main branch for a more complete and production ready version
+
+## Features
+
+- OpenAPI 3 (API using connexion/swagger)
+
 ## Test local
 
 ```
