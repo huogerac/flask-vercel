@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, current_app
 
 
 def api_version():
@@ -6,7 +6,9 @@ def api_version():
         jsonify(
             {
                 "version": {
-                    "api": "0.1.0",
+                    "api": "0.2.0",
+                    "flask_env": current_app.config["FLASK_ENV"],
+                    "debug": current_app.config["DEBUG"],
                 },
             }
         ),

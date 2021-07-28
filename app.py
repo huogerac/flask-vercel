@@ -1,18 +1,8 @@
-from flask import Flask
-import connexion
+from ext import configuration, api
 
 
-def create_app(version="/"):
+def create_app(**config):
 
-    connexion_app = connexion.FlaskApp(
-        __name__,
-        specification_dir="./api/",
-        options={
-            "swagger_url": "api",
-        },
-    )
-    connexion_app.add_api("openapi.yaml", validate_responses=True, base_path=version)
-
-    app = connexion_app.app
-
+    app = api.create_api_app()
+    configuration.init_app(app, **config)
     return app
