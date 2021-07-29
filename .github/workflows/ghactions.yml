@@ -36,6 +36,12 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements-dev.txt
 
+      - name: Create the database
+        run: flask db upgrade
+        env:
+          FLASK_APP: app
+          DATABASE_URI: postgresql://postgres:vercel123@localhost/vercel_test
+
       - name: Test with pytest
         run: pytest --cache-clear
         env:

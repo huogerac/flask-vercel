@@ -10,7 +10,10 @@ from ext.database import db
 @pytest.fixture(scope="session")
 def app():
     app = create_app()
-    yield app
+    with app.app_context():
+        db.create_all(app=app)
+        yield app
+        db.drop_all(app=app)
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -27,8 +30,6 @@ def db_session(app):
         if transaction.nested and not transaction._parent.nested:
             session.expire_all()
             session.begin_nested()
-
-    db.session.begin_nested()
 
     yield db.session
 

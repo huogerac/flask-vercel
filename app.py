@@ -1,4 +1,5 @@
 from ext import configuration, api, database
+from models.users import *
 
 
 def create_app(**config):
