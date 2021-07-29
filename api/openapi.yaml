@@ -19,9 +19,19 @@ paths:
   /api/version:
     get:
       operationId: api.api_version
-      summary: Retorna a versão da API
+      summary: Returns the API version
       tags:
         - Status
+      responses:
+        200:
+          description: Success
+
+  /api/users:
+    get:
+      operationId: api.users.list_users
+      summary: Returns users list
+      tags:
+        - Users
       responses:
         200:
           description: Success
