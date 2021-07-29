@@ -20,6 +20,9 @@ class ProductionConfig:  # pylint: disable=R0903
 
     SECRET_KEY = os.getenv("FLASK_SECRET_KEY", "Ch@nG3_th1s_IN_PR0D!")
 
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URI")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 
 class DevelopmentConfig(ProductionConfig):  # pylint: disable=R0903
     FLASK_ENV = "development"
